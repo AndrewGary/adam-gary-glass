@@ -49,7 +49,7 @@ const AddNewProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch(process.env.NODE_ENV === 'production' ? 'https://adam-gary-glass.herokuapp.com/api/products' :'http://localhost:9000/api/products', {
+    await fetch('/api/products', {
       method: 'POST',
       body: JSON.stringify({data: formValues}),
       headers: {'Content-Type': 'application/json'}
