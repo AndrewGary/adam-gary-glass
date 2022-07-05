@@ -8,7 +8,7 @@ const SpecificCategory = props => {
     const [ allProducts, setAllProducts ] = useState([]);
 
     useEffect(() => {
-        axios.get(process.env.NODE_ENV === 'production' ? `https://adamgaryglass.herokuapp.com/api/products/${category}` : `http://localhost:9000/api/products/${category}`)
+        axios.get(`/api/products/${category}`)
         .then(resp => {
             console.log(resp)
             setAllProducts(resp.data);
