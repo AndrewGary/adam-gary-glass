@@ -12,6 +12,17 @@ const Categories = props => {
     const index = 0;
 
     return (
+        <>
+        <div className="flex flex-col items-center md:hidden">
+          <div className=" w-5/6">
+          {productCategories.map(category => {
+            return <div className="my-2 py-3 border font-bold border-gray-300 hover:border-gray-500">
+              {category.name}
+            </div>
+          })}
+          </div>
+        </div>
+
         <div className="hidden md:flex border border-red-900  justify-center">
           <div className="w-3/4">
             {/* <img src='/SherlockDefaultPhoto.jpeg' /> */}
@@ -30,6 +41,7 @@ const Categories = props => {
             </div>
           </div>
         </div>
+        </>
       );
 }
 

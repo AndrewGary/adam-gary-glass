@@ -13,7 +13,7 @@ const ProductThumbnail = props => {
         <Link to={`/productDetails/${product._id}`} onClick={handleClick} className="flex-col justify-center border border-black w-1/4 h-auto m-8">
             <h1>{product.name}</h1>
             <div className="flex justify-center">
-                <img src={product.images[0]} alt={product.name} className=" w-32 h-auto border border-red-500"/>
+                <img src={product.defaultImage} alt={product.name} className=" w-32 h-auto border border-red-500"/>
             </div>
             <div>
                 ${product.price}
