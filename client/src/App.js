@@ -12,6 +12,7 @@ import FileUploadTest from './components/FileUploadTest';
 import Products from './pages/Products/Products';
 import ProductDetails from './pages/Products/components/ProductDetails';
 import Footer from './components/Footer';
+import LandingPage from './pages/Landing Page/LandingPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Navbar />
 
       <Routes>
+        <Route path='/' element={<LandingPage />} />
         <Route path='/footer' element={<Footer />} />
         <Route path='/productDetails/:id' element={<ProductDetails />} />
         <Route path='/products' element={<Products />} />
@@ -30,6 +32,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/photoUploadTest' element={<FileUploadTest />} />
       </Routes>
+      <Footer />
       {/* <WelcomeMessage /> */}
       {/* <Login /> */}
       {/* <ForgotPasswordPage /> */}
