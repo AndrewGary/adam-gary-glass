@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import WelcomeMessage from "../../components/WelcomeMessage";
 import CheckIfOfAge from "../../components/CheckIfOfAge";
+import PromoSection from "./components/PromoSection";
 
 const LandingPage = () => {
 
@@ -16,8 +17,9 @@ const LandingPage = () => {
         <>
         
         {ofAge ? 
-        <div className="flex flex-col items-center border border-red-500 h-screen ">
+        <div className="flex flex-col items-center h-screen ">
             <WelcomeMessage />
+            <PromoSection />
         </div> : 
         <CheckIfOfAge setOfAge={setOfAge}/>
         }
