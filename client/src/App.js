@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import WelcomeMessage from './components/WelcomeMessage';
@@ -15,6 +16,7 @@ import Footer from './components/Footer';
 import LandingPage from './pages/Landing Page/LandingPage';
 
 function App() {
+  
   return (
     <div className="App">
       <Navbar />

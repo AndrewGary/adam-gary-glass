@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import WelcomeMessage from "../../components/WelcomeMessage";
+import CheckIfOfAge from "../../components/CheckIfOfAge";
 
 const LandingPage = () => {
 
+    const [ ofAge, setOfAge ] = useState(false);
+
+    useEffect(() => {
+        if(localStorage.getItem('ofAge')){
+            setOfAge(true);
+        }
+    }, [])
+
     return (
-        <div className="border border-red-500 justify-center items-center flex-col h-screen ">
-        {/* // <div className="flex-col h-screen w-full justify-center border border-black"> */}
-            <div className="border border-green-500 w-3/4">
-                test
-            </div>
-            {/* <WelcomeMessage />
-            <div className="flex-col w-3/4 items-center border border-red-400">
-                <h2 className="border-y border-gray-300 p-5 m-2">Homepage</h2>
-            </div> */}
-        </div>
+        <>
+        
+        {ofAge ? 
+        <div className="flex flex-col items-center border border-red-500 h-screen ">
+            <WelcomeMessage />
+        </div> : 
+        <CheckIfOfAge setOfAge={setOfAge}/>
+        }
+        </>
     )
 }
 

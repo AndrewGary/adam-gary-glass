@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 
-const CheckIfOfAge = () => {
+const CheckIfOfAge = props => {
+
+  const {setOfAge} = props;
 
     const handleSubmit = e => {
         e.preventDefault();
         if(e.target.name === 'over21'){
-          console.log('user is over21');
+          localStorage.setItem('ofAge', true);
+          setOfAge(true);
         }else{
-          console.log('user is under 21');
+          localStorage.setItem('ofAge', false);
+          setOfAge(false);
         }
     }
 

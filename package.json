@@ -12,7 +12,8 @@
     "server": "nodemon index.js",
     "start": "node index.js",
     "build": "cd client && npm i && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "localsite": "cd client && npm run build && npm run start && cd .. && npm run sever"
   },
   "repository": {
     "type": "git",
