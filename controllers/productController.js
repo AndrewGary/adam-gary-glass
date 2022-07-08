@@ -31,7 +31,8 @@ const addProduct = asyncHandler(async (req, res) => {
         description: req.body.data.description,
         price: req.body.data.price,
         category: req.body.data.category,
-        images: []
+        images: [],
+        defaultImage: ''
     }
     const imageURLs = []
 
@@ -44,8 +45,9 @@ const addProduct = asyncHandler(async (req, res) => {
     }
 
     productBeingAdded.images = imageURLs;
+    productBeingAdded.defaultImage = imageURLs[0]
 
-    // console.log('productBeingAdded: ', productBeingAdded);
+    console.log('productBeingAdded: ', productBeingAdded);
 
     const product = await Product.create(productBeingAdded);
 

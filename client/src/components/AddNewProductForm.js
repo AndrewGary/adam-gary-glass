@@ -49,7 +49,7 @@ const AddNewProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch('/api/products', {
+    await fetch('http://localhost:9000/api/products', {
       method: 'POST',
       body: JSON.stringify({data: formValues}),
       headers: {'Content-Type': 'application/json'}
@@ -179,6 +179,7 @@ const AddNewProductForm = () => {
                 </div>
                 <label htmlFor="fileSelector" className=" text-gray-500">
                     Select Pictures
+                    <div>The first picture you select will be the default image</div>
                     <input
                     onChange={handleChange}
                     name="fileSelector"
