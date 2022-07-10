@@ -16,7 +16,7 @@ const Categories = props => {
         <div className="flex flex-col items-center md:hidden">
           <div className=" w-5/6">
           {productCategories.map(category => {
-            return <div className="my-2 py-3 border font-bold border-gray-300 hover:border-gray-500">
+            return <div onClick={handleCategorySelection} className="my-2 py-3 border font-bold border-gray-300 hover:border-gray-500">
               {category.name}
             </div>
           })}
