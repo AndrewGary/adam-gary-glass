@@ -61,7 +61,7 @@ const FileUploadTest = () => {
     const uploadImage = async (base64EncodedImage) => {
         console.log(base64EncodedImage)
         try{
-            await fetch('http://localhost:9000/api/upload', {
+            await fetch(process.env.NODE_ENV === 'production' ? 'api/upload/' : 'http://localhost:9000/api/upload', {
                 method: 'POST',
                 body: JSON.stringify({data: base64EncodedImage}),
                 headers: {'Content-type': 'application/json'}

@@ -15,7 +15,7 @@ const PromoSection = () => {
     }
 
     useEffect(() => {
-        axios.get('http://localhost:9000/api/products/newWork')
+        axios.get(process.env.NODE_ENV === 'production' ? '/api/products/newWork' : 'http://localhost:9000/api/products/newWork')
         .then(resp => {
             setNewWork(resp.data);
         })

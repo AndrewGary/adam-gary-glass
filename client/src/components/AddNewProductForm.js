@@ -49,7 +49,7 @@ const AddNewProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await fetch('http://localhost:9000/api/products', {
+    await fetch(process.env.NODE_ENV === 'production' ? '/api/products' : 'http://localhost:9000/api/products', {
       method: 'POST',
       body: JSON.stringify({data: formValues}),
       headers: {'Content-Type': 'application/json'}
