@@ -10,6 +10,7 @@ const cors = require('cors');
 connectDB();
 
 const productRouter = require('./routers/productRouter');
+const emailListRouter = require('./routers/emailListRouter');
 
 const app = express();
 app.use(cors());
@@ -18,6 +19,7 @@ app.use(express.json({ limit: '50mb'}));
 app.use(express.urlencoded({ extended: false}))
 
 app.use('/api/products', productRouter);
+app.use('/api/emailList', emailListRouter);
 
 // if(process.env.NODE_ENV === 'production'){
 //   app.use(express.static('client/build'))

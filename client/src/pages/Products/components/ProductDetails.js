@@ -24,7 +24,7 @@ const ProductDetails = props => {
     }, [])
 
     return (
-        <div>
+        <div className="h-screen">
             { product ? <div>hello</div> : null}
         </div>
     )

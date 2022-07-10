@@ -31,7 +31,7 @@ const PromoSection = () => {
                 <h2 className="my-4">New Work</h2>
                 {newWork.length !== 0 && productIndex !== null &&
                     <div className="flex justify-evenly mb-4 border border-black">
-                        <div className="flex flex-col justify-evenly items-center w-1/2 border border-red-700">
+                        <div className="flex flex-col justify-evenly items-center w-1/2 border">
                             <span className="border-b border-gray-300">
                                 {newWork[productIndex].name}
                             </span>
@@ -50,7 +50,7 @@ const PromoSection = () => {
                                 </button>
                             </a>
                         </div>
-                        <div className="">
+                        <div className="flex w-1/2">
                             <img className=" w-auto h-60" src={newWork[productIndex].defaultImage} alt={newWork[productIndex].name} />
                         </div>
                         {/* <div className="flex items-center w-5">
