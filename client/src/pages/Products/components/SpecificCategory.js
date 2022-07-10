@@ -8,7 +8,7 @@ const SpecificCategory = props => {
     const [ allProducts, setAllProducts ] = useState([]);
 
     useEffect(() => {
-        axios.get(`/api/products/${category}`)
+        axios.get(`/api/products/category/${category}`)
         .then(resp => {
             console.log(resp)
             setAllProducts(resp.data);

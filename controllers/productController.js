@@ -12,7 +12,7 @@ const getProducts = asyncHandler(async (req, res) => {
 
 const getNewWork = asyncHandler(async (req, res) => {
     console.log('hitting endpoint')
-    const newWork = await Product.find().sort({createdAt: 1}).limit(5)
+    const newWork = await Product.find().sort({createdAt: -1}).limit(5)
 
     console.log(newWork);
     res.status(200).json(newWork)

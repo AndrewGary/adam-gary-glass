@@ -25,7 +25,7 @@ const ProductDetails = props => {
 
     return (
         <div>
-            { product ? <div></div> : null}
+            { product ? <div>hello</div> : null}
         </div>
     )
 }
