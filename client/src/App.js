@@ -14,6 +14,7 @@ import Products from './pages/Products/Products';
 import ProductDetails from './pages/Products/components/ProductDetails';
 import Footer from './components/Footer';
 import LandingPage from './pages/Landing Page/LandingPage';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
   
@@ -22,6 +23,7 @@ function App() {
       <Navbar />
 
       <Routes>
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/' element={<LandingPage />} />
         <Route path='/footer' element={<Footer />} />
         <Route path='/productDetails/:id' element={<ProductDetails />} />
