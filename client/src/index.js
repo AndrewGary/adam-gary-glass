@@ -12,9 +12,14 @@ const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-  <Auth0Provider
+  {/* <Auth0Provider
     domain={domain}
     clientId={clientId}
+    redirectUri={window.location.origin}
+  > */}
+  <Auth0Provider
+    domain='dev-nzm85416.us.auth0.com'
+    clientId='Fu80eP1Xj31Eh3vMGe3gAEbP1CAkePak'
     redirectUri={window.location.origin}
   >
     <React.StrictMode>

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const {
+    getAllProducts,
     getProducts,
     getNewWork,
     addProduct,
@@ -10,16 +11,18 @@ const {
     getSpecificProduct
 } = require('../controllers/productController');
 
-router.get('/category/:category', getProducts)
+router.get('/allProducts', getAllProducts);
+
+router.get('/category/:category', getProducts);
 
 router.get('/newWork', getNewWork);
 
 router.get('/productDetails/:id', getSpecificProduct);
 
-router.post('/', addProduct)
+router.post('/', addProduct);
 
-router.put('/:id', updateProduct)
+router.put('/:id', updateProduct);
 
-router.delete('/:id', deleteProduct)
+router.delete('/:id', deleteProduct);
 
 module.exports = router;

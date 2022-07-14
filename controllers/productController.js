@@ -3,6 +3,12 @@ const asyncHandler = require('express-async-handler')
 const Product = require('../models/productsModel');
 const { cloudinary } = require('../utils/cloudinary');
 
+const getAllProducts = asyncHandler(async (req, res) => {
+    const allProducts = await Product.find();
+
+    res.status(200).json(allProducts);
+})
+
 const getProducts = asyncHandler(async (req, res) => {
 
     const products = await Product.find({ category: req.params.category})
@@ -65,6 +71,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 })
 
 module.exports = {
+    getAllProducts,
     getProducts,
     getNewWork,
     addProduct,

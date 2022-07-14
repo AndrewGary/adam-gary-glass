@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import WelcomeMessage from './components/WelcomeMessage';
@@ -15,15 +15,29 @@ import ProductDetails from './pages/Products/components/ProductDetails';
 import Footer from './components/Footer';
 import LandingPage from './pages/Landing Page/LandingPage';
 import Dashboard from './pages/Dashboard/Dashboard';
+import EditProducts from './components/EditProducts';
+
+import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
+
+  const { loginWithRedirect } = useAuth0();
+  const { user } = useAuth0();
+  const { logout } = useAuth0();
+
+  const [activeUser, setActiveUser ] = useState(user);
+
+
+
+  console.log('App user: ', user);
   
   return (
     <div className="App">
-      <Navbar />
+      <Navbar loginWithRedirect={loginWithRedirect} logout={logout} user={user}/>
 
       <Routes>
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/editProducts' element={<EditProducts />} />
+        <Route path='/dashboard' element={<Dashboard activeUser={activeUser} user={user}/>} />
         <Route path='/' element={<LandingPage />} />
         <Route path='/footer' element={<Footer />} />
         <Route path='/productDetails/:id' element={<ProductDetails />} />
