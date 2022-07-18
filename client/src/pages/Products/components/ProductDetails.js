@@ -21,47 +21,44 @@ This example requires some changes to your config:
   }
   ```
   */
- 
-  // import React, { useState, useEffect} from "react";
- // import { useParams } from "react-router-dom";
- // import axios from "axios";
- 
- // const ProductDetails = props => {
- 
- //     const { id } = useParams();
- 
- //     const [ product, setProduct ] = useState('');
- 
- //     console.log('product: ', product);
- 
- //     console.log('id: ', id);
- 
- //     useEffect(() => {
- //         axios.get(`http://localhost:9000/api/products/productDetails/${id}`)
- //         .then(resp => {
- //             setProduct(resp.data);
- //         })
- //         .catch(error => {
- //             console.log(error);
- //         })
- //     }, [])
- 
- //     return (
- //         <div className="h-screen">
- //             { product ? <div>hello</div> : null}
- //         </div>
- //     )
- // }
- 
- // export default ProductDetails;
 
+// import React, { useState, useEffect} from "react";
+// import { useParams } from "react-router-dom";
+// import axios from "axios";
 
- import { useState, useEffect } from "react";
- import { useParams } from "react-router-dom";
- import axios from "axios";
+// const ProductDetails = props => {
 
- 
- 
+//     const { id } = useParams();
+
+//     const [ product, setProduct ] = useState('');
+
+//     console.log('product: ', product);
+
+//     console.log('id: ', id);
+
+//     useEffect(() => {
+//         axios.get(`http://localhost:9000/api/products/productDetails/${id}`)
+//         .then(resp => {
+//             setProduct(resp.data);
+//         })
+//         .catch(error => {
+//             console.log(error);
+//         })
+//     }, [])
+
+//     return (
+//         <div className="h-screen">
+//             { product ? <div>hello</div> : null}
+//         </div>
+//     )
+// }
+
+// export default ProductDetails;
+
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 //  const product = {
 //   name: "Basic Tee 6-Pack",
 //   price: "$192",
@@ -121,85 +118,105 @@ function classNames(...classes) {
 }
 
 const ProductDetails = () => {
-//   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-//   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  //   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  //   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
-    const { id } = useParams();
-    const [ product, setProduct ] = useState({});
+  const { id } = useParams();
+  const [product, setProduct] = useState({});
 
-     useEffect(() => {
-         axios.get( process.env.NODE_ENV === 'production' ? `/api/products/productDetails/${id}` : `http://localhost:9000/api/products/productDetails/${id}`)
-         .then(resp => {
-             setProduct(resp.data);
-         })
-         .catch(error => {
-             console.log(error);
-         })
-         .finally(() => {
-            console.log('yeah')
-         })
-     }, [])
+  useEffect(() => {
+    axios
+      .get(
+        process.env.NODE_ENV === "production"
+          ? `/api/products/productDetails/${id}`
+          : `http://localhost:9000/api/products/productDetails/${id}`
+      )
+      .then((resp) => {
+        setProduct(resp.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        console.log("yeah");
+      });
+  }, []);
 
   return (
-    product.images && 
-    <div className="bg-white">
-      <div className="pt-6">
-
-        {/* Image gallery */}
-        <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
-          <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-            <img
-              src={product.images[0]}
-              className="w-full h-full object-center object-cover"
-            />
-          </div>
-          <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-            <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+    product.images && (
+      <div className="bg-white">
+        <div className="pt-6">
+          {/* Image gallery */}
+          <div className="hidden md:grid mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8">
+            <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
               <img
-                src={product.images[1]}
+                src={product.images[0]}
                 className="w-full h-full object-center object-cover"
               />
             </div>
-            <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+            <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+              <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+                <img
+                  src={product.images[1]}
+                  className="w-full h-full object-center object-cover"
+                />
+              </div>
+              <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
+                <img
+                  src={product.images[2]}
+                  className="w-full h-full object-center object-cover"
+                />
+              </div>
+            </div>
+            <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
               <img
-                src={product.images[2]}
+                src={product.defaultImage}
                 className="w-full h-full object-center object-cover"
               />
             </div>
           </div>
-          <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
-            <img
-              src={product.defaultImage}
-              className="w-full h-full object-center object-cover"
-            />
+
+          {/* Start here */}
+
+          <div className="flex overflow-x-auto md:hidden">
+              <img className="min-w-full h-auto w-2/4 bg-slate-300 border border-red-500 m-4" src={product.defaultImage} />
+              <img className="min-w-full h-auto w-2/4 bg-slate-300 border border-red-500 m-4" src={product.defaultImage} />
+              <img className="min-w-full h-auto w-2/4 bg-slate-300 border border-red-500 m-4" src={product.defaultImage} />
+              <img className="min-w-full h-auto w-2/4 bg-slate-300 border border-red-500 m-4" src={product.defaultImage} />
+              <img className="min-w-full h-auto w-2/4 bg-slate-300 border border-red-500 m-4" src={product.defaultImage} />
+            
           </div>
-        </div>
 
-        {/* Product info */}
-        <div className="flex flex-col items-center">
-          <div className="w-3/4">
-            <div className="">
-              <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-                {product.name}
-              </h1>
-              <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
-                {product.price}
-              </h2>
-            </div>
+          {/* <div className=" grid grid-flow-col auto-cols-fr md:hidden">
+          <img classname='flex-shrink-0' src={product.images[0]}/>
+          <img classname='flex-shrink-0' src={product.images[0]}/>
+        </div> */}
 
-            <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-              {/* Description and details */}
-              <div>
-                <h3 className="sr-only">Description</h3>
-
-                <div className="space-y-6">
-                  <p className="text-base text-gray-900">
-                    {product.description}
-                  </p>
-                </div>
+          {/* Product info */}
+          <div className="flex flex-col items-center">
+            <div className="w-3/4">
+              <div className="">
+                <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+                  {product.name}
+                </h1>
+                <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl">
+                  {product.price}
+                </h2>
               </div>
 
-              {/* <div className="mt-10">
+              <div className="py-10 lg:pt-6 lg:pb-16 lg:col-start-1 lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                {/* Description and details */}
+                <div>
+                  <h3 className="sr-only">Description</h3>
+
+                  <div className="space-y-6">
+                    <p className="text-base text-gray-900">
+                      {product.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* <div className="mt-10">
                 <h3 className="text-sm font-medium text-gray-900">
                   Highlights
                 </h3>
@@ -215,19 +232,20 @@ const ProductDetails = () => {
                 </div>
               </div> */}
 
-              <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Details</h2>
+                <div className="mt-10">
+                  <h2 className="text-sm font-medium text-gray-900">Details</h2>
 
-                <div className="mt-4 space-y-6">
-                  <p className="text-sm text-gray-600">{product.details}</p>
+                  <div className="mt-4 space-y-6">
+                    <p className="text-sm text-gray-600">{product.details}</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    )
   );
-}
+};
 
 export default ProductDetails;
